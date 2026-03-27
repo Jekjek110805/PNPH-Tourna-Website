@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tournament Registration</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oxanium:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .a {
+        color: white;
+      }
+      body {
+        font-family: 'Oxanium', cursive;
+        background-color: #111827;
+        color: #f9fafb;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background-image: url("PNPH BACKGROUND (2).png");
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+
+      .container {
+        max-width: 800px;
+        width: 100%;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(240, 240, 240, 0.1);
+        margin-bottom: 30px;
+        position: relative;
+      }
+
+      h1 {
+        text-align: center;
+        color: #e0f2fe;
+        margin-bottom: 20px;
+        font-weight: 600;
+        font-size: 2.5rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      }
+
+      form {
+        margin-top: 20px;
+      }
+
+      .form-group {
+        margin-bottom: 25px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 8px;
+        color: #ffffff;
+        font-weight: 500;
+        font-size: 1.1rem;
+      }
+
+      input[type="text"],
+      input[type="email"],
+      input[type="number"],
+      textarea,
+      select {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid rgba(240, 240, 240, 0.2);
+        border-radius: 6px;
+        background-color: rgba(255, 255, 255, 0.05);
+        color: #ffffff;
+        font-family: 'Oxanium', cursive;
+        font-size: 1rem;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        backdrop-filter: blur(5px);
+        font-weight: 600px;
+      }
+
+      input[type="text"]:focus,
+      input[type="email"]:focus,
+      input[type="number"]:focus,
+      textarea:focus,
+      select:focus {
+        outline: none;
+        border-color: #a855f7;
+        box-shadow: 0 0 5px rgba(167, 139, 250, 0.3);
+      }
+
+      textarea {
+        resize: none;
+        height: 120px;
+      }
+
+      select {
+        appearance: none;
+        background-color: #290329;
+      }
+
+      button {
+        width: 20%;
+        padding: 12px;
+        margin-right: 50px;
+        background-color: #ffffff;
+        color: #000000;
+        border: none;
+        border-radius: 6px;
+        font-size: 1.2rem;
+        cursor: pointer;
+        margin-right: 40px;
+      }
+
+      button:hover {
+        background-color: hsl(279, 81%, 8%);
+        transform: translateY(-2px);
+      }
+
+      button:active {
+        background-color: #5b21b6;
+        transform: translateY(0);
+      }
+
+      .error-message {
+        color: #f87171;
+        font-size: 0.9rem;
+        margin-top: 8px;
+        display: none;
+      }
+
+      .error input,
+      .error select,
+      .error textarea {
+        border-color: #f87171;
+      }
+
+      .error input:focus,
+      .error select:focus,
+      .error textarea:focus {
+        box-shadow: 0 0 5px rgba(248, 113, 113, 0.3);
+      }
+
+      #receipt {
+        background-color: rgba(40, 40, 60, 0.75);
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(10, 10, 40, 0.8);
+        margin-top: 30px;
+        color: #00ffff;
+        display: none;
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(0, 255, 255, 0.25);
+        font-family: 'Oxanium', cursive;
+        font-weight: 600;
+        text-shadow: 0 0 8px #0ff, 0 0 12px #0ff;
+      }
+
+      #receipt h2 {
+        text-align: center;
+        color: #00ffff;
+        margin-bottom: 20px;
+        font-size: 2rem;
+        text-shadow: 0 0 10px #0ff;
+      }
+
+      #receipt ul {
+        list-style: none;
+        padding: 0;
+        margin-bottom: 20px;
+        font-size: 1.2rem;
+      }
+
+      #receipt li {
+        padding: 10px 0;
+        border-bottom: 1px solid rgba(0, 255, 255, 0.15);
+      }
+
+      #receipt li:last-child {
+        border-bottom: none;
+      }
+
+      #receipt li strong {
+        color: #a0fff9;
+      }
+
+      #receipt p {
+        font-size: 1.25rem;
+        font-weight: 700;
+        text-align: center;
+        color: #00ffff;
+        text-shadow: 0 0 8px #0ff;
+      }
+
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.5);
+        justify-content: center;
+        align-items: center;
+        backdrop-filter: blur(10px);
+      }
+
+      .modal-content {
+        background-color: #1d4ed8;
+        color: #f9fafb;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        width: 90%;
+        max-width: 500px;
+        text-align: center;
+        animation: fadeIn 0.3s;
+        border: 1px solid rgba(240, 240, 240, 0.1);
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(-50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .modal-content h2 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+        color: #e0f2fe;
+      }
+
+      .modal-content p {
+        font-size: 1.2rem;
+        margin-bottom: 25px;
+        line-height: 1.5;
+      }
+
+      .modal-content button {
+        padding: 12px 25px;
+        background-color: #a855f7;
+        color: #ffffff;
+        border: none;
+        border-radius: 6px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        font-family: 'Oxanium', cursive;
+        margin: 0 10px;
+      }
+
+      .modal-content button:hover {
+        background-color: #7e22ce;
+        transform: translateY(-2px);
+      }
+
+      .modal-content button:active {
+        background-color: #5b21b6;
+        transform: translateY(0);
+      }
+
+      #okBtn {
+        background-color: #a855f7;
+      }
+
+      #okBtn:hover {
+        background-color: #7e22ce;
+      }
+
+      .logo {
+        width: auto;
+        height: 350px;
+      }
+
+      .back-button {
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 6px;
+        color: #ffffff;
+        margin-left: 20px;
+        transition: background-color 0.3s ease;
+        backdrop-filter: blur(5px);
+        border: 1px solid rgba(0, 0, 0, 0.357);
+        padding-top: 100px;
+      }
+
+      .back-button:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+      }
+
+      .back-button:active {
+        background-color: rgba(255, 255, 255, 0.3);
+      }
+
+      button {
+        height: 70px;
+        width: 180px;
+      }
+
+      #backToHomeBtn {
+        width: auto;
+        margin-top: 20px;
+        padding: 15px 30px;
+        font-size: 1.2rem;
+        background-color: #a855f7;
+        color: #ffffff;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+      }
+
+      #backToHomeBtn:hover {
+        background-color: #7e22ce;
+        transform: translateY(-2px);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <button><a href="FINALIST LOG OUT.html">Back</a></button>
+      <img src="PN EGAMES (1).png" alt="Logo" class="logo" />
+      <h1>Tournament Registration</h1>
+      <form id="registrationForm">
+        <div class="form-group">
+          <label for="teamName">Name of Team:</label>
+          <input type="text" id="teamName" name="teamName" required />
+          <div id="teamNameError" class="error-message">
+            Please enter a team name.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="gameChosen">Game Chosen to Play:</label>
+          <select id="gameChosen" name="gameChosen" required>
+            <option value="">Select a Game</option>
+            <option value="Valorant">Valorant</option>
+            <option value="LeagueOfLegends">League of Legends</option>
+            <option value="DOTA2">DOTA 2</option>
+            <option value="CallOfDuty">Call of Duty</option>
+            <option value="MobileLegends">Mobile Legends</option>
+            <option value="Others">Others</option>
+          </select>
+          <div id="gameChosenError" class="error-message">
+            Please choose a game.
+          </div>
+        </div>
+
+        <div id="playerContainer"></div>
+
+        <div class="form-group">
+          <label for="playerCapacity">Capacity of Players:</label>
+          <input type="number" id="playerCapacity" name="playerCapacity" min="1" required />
+          <div id="playerCapacityError" class="error-message">
+            Please enter the number of players.
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="contactNumber">Contact Number:</label>
+          <input type="text" id="contactNumber" name="contactNumber" required />
+          <div id="contactNumberError" class="error-message">
+            Please enter a valid contact number.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required />
+          <div id="emailError" class="error-message">
+            Please enter a valid email address.
+          </div>
+        </div>
+
+        <button type="submit">Submit your Team</button>
+      </form>
+
+      <div id="receipt">
+        <h2>Registration Receipt</h2>
+        <ul id="receiptDetails"></ul>
+        <p>Thank you for your registration! Admin will contact if your TEAM is accepted.</p>
+        <button id="backToHomeBtn">REGISTERED DONE! BACK TO HOMEPAGE</button>
+      </div>
+    </div>
+
+    <script>
+      const showAlert = (title, message) => {
+        alert(`${title}: ${message}`);
+      };
+
+      const gameSelect = document.getElementById("gameChosen");
+      const playerContainer = document.getElementById("playerContainer");
+      const backToHomeBtn = document.getElementById("backToHomeBtn");
+
+      const roles = [
+        "TANK",
+        "MAGE",
+        "MARKSMAN",
+        "SUPPORT",
+        "EXPLANER",
+        "CORE",
+      ];
+
+      gameSelect.addEventListener("change", () => {
+        playerContainer.innerHTML = "";
+        const selectedGame = gameSelect.value;
+
+        if (selectedGame) {
+          for (let i = 1; i <= 6; i++) {
+            const playerGroup = document.createElement("div");
+            playerGroup.classList.add("form-group");
+
+            const nameLabel = document.createElement("label");
+            nameLabel.textContent = `Player ${i} Name:`;
+            playerGroup.appendChild(nameLabel);
+
+            const nameInput = document.createElement("input");
+            nameInput.type = "text";
+            nameInput.name = `player${i}Name`;
+            nameInput.placeholder = `Enter Player ${i} Name`;
+            nameInput.required = true;
+            playerGroup.appendChild(nameInput);
+
+            if (
+              selectedGame === "MobileLegends" ||
+              selectedGame === "LeagueOfLegends" ||
+              selectedGame === "DOTA2"
+            ) {
+              const roleLabel = document.createElement("label");
+              roleLabel.textContent = `Player ${i} Role:`;
+              playerGroup.appendChild(roleLabel);
+
+              const roleSelect = document.createElement("select");
+              roleSelect.name = `player${i}Role`;
+              roleSelect.required = true;
+
+              const defaultOption = document.createElement("option");
+              defaultOption.value = "";
+              defaultOption.textContent = "Select Role";
+              roleSelect.appendChild(defaultOption);
+
+              roles.forEach((role) => {
+                const option = document.createElement("option");
+                option.value = role;
+                option.textContent = role;
+                roleSelect.appendChild(option);
+              });
+
+              playerGroup.appendChild(roleSelect);
+            }
+
+            playerContainer.appendChild(playerGroup);
+          }
+        }
+      });
+
+      const form = document.getElementById("registrationForm");
+      const receipt = document.getElementById("receipt");
+      const receiptDetails = document.getElementById("receiptDetails");
+
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        document.querySelectorAll(".error-message").forEach((el) => {
+          el.style.display = "none";
+        });
+
+        let hasError = false;
+
+        const teamName = form.teamName.value.trim();
+        if (!teamName) {
+          document.getElementById("teamNameError").style.display = "block";
+          hasError = true;
+        }
+
+        const selectedGame = form.gameChosen.value;
+        if (!selectedGame) {
+          document.getElementById("gameChosenError").style.display = "block";
+          hasError = true;
+        }
+
+        const playerCapacity = parseInt(form.playerCapacity.value, 10);
+        if (isNaN(playerCapacity) || playerCapacity < 1) {
+          document.getElementById("playerCapacityError").style.display = "block";
+          hasError = true;
+        }
+
+        const contactNumber = form.contactNumber.value.trim();
+        if (!contactNumber.match(/^\+?[0-9]{7,15}$/)) {
+          document.getElementById("contactNumberError").style.display = "block";
+          hasError = true;
+        }
+
+        const email = form.email.value.trim();
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email)) {
+          document.getElementById("emailError").style.display = "block";
+          hasError = true;
+        }
+
+        if (hasError) {
+          showAlert(
+            "Form Submission Failed",
+            "Please correct the errors and try again."
+          );
+          return;
+        }
+
+        let playerNamesHTML = "";
+        for (let i = 1; i <= 6; i++) {
+          const playerName = form[`player${i}Name`]?.value.trim();
+          if (playerName) {
+            playerNamesHTML += `<li><strong>Player ${i} Name:</strong> ${playerName}</li>`;
+            const roleSelect = form[`player${i}Role`];
+            if (roleSelect) {
+              const role = roleSelect.value;
+              playerNamesHTML += `<li><strong>Player ${i} Role:</strong> ${role ? role : "N/A"}</li>`;
+            }
+          }
+        }
+
+        receiptDetails.innerHTML = `
+          <li><strong>Team Name:</strong> ${teamName}</li>
+          <li><strong>Game Chosen:</strong> ${selectedGame}</li>
+          <li><strong>Player Capacity:</strong> ${playerCapacity}</li>
+          ${playerNamesHTML}
+          <li><strong>Contact Number:</strong> ${contactNumber}</li>
+          <li><strong>Email:</strong> ${email}</li>
+        `;
+
+        receipt.style.display = "block";
+        form.style.display = "none";
+      });
+
+      backToHomeBtn.addEventListener('click', () => {
+        window.location.href = 'FINALIST LOG OUT.html';
+      });
+    </script>
+  </body>
+</html>

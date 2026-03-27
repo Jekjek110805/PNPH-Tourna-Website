@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teams List</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="PN EGAMES (1).png" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link>
+    <style>
+        body {
+            font-family: 'Oxanium', cursive;
+            background-color: #111827;
+            color: #f9fafb;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-image: url("PNPH BACKGROUND (2).png"); /* Make sure this path is correct */
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background-color: rgba(240, 240, 240, 0.1);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(240, 240, 240, 0.1);
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        h1 {
+            text-align: center;
+            color: #e0f2fe;
+            margin-bottom: 20px;
+            font-weight: 600;
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 20px;
+        }
+
+        li {
+            padding: 15px;
+            border-bottom: 1px solid rgba(240, 240, 240, 0.1);
+            font-size: 1.1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        li:last-child {
+            border-bottom: none;
+        }
+
+        .team-name {
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .view-details-btn,
+        .edit-team-btn {
+            padding: 8px 16px;
+            background-color: #a855f7;
+            color: #ffffff;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            font-family: 'Oxanium', cursive;
+        }
+
+        .view-details-btn:hover,
+        .edit-team-btn:hover {
+            background-color: #7e22ce;
+            transform: translateY(-2px);
+        }
+
+        .view-details-btn:active,
+        .edit-team-btn:active {
+            background-color: #5b21b6;
+            transform: translateY(0);
+        }
+
+        .back-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 8px 16px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 6px;
+            color: #ffffff;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background-color 0.3s ease;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(240, 240, 240, 0.1);
+        }
+
+        .back-button:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .back-button:active {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            li {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            .actions {
+                flex-direction: column;
+                gap: 10px;
+                width: 100%;
+            }
+            .view-details-btn,
+            .edit-team-btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>TEAM REGISTERED</h1>
+              <a href="FINALIST LOG OUT.html" class="navbar-link" data-nav-link>BACK</a>
+        <ul>
+            <li>
+<a href="tech-club.html" class="team-name">TECH CLUB</a>
+                <div class="actions">
+                    <button class="view-details-btn">View Details</button>
+                    <button class="edit-team-btn">Edit Team</button>
+                </div>
+            </li>
+            <li>
+<a href="tech-club.html" class="team-name">PERFORMING CLUB</a>
+                <div class="actions">
+                    <button class="view-details-btn">View details</button>
+                    <button class="edit-team-btn">Edit Team</button>
+                </div>
+            </li>
+            <li>
+<a href="tech-club.html" class="team-name">ECO GREEN CLUB</a>
+                <div class="actions">
+                    <button class="view-details-btn">View Details</button>
+                    <button class="edit-team-btn">Edit Team</button>
+                </div>
+            </li>
+                   <li>
+<a href="tech-club.html" class="team-name">LITERARY CLUB</a>
+                <div class="actions">
+                    <button class="view-details-btn">View Details</button>
+                    <button class="edit-team-btn">Edit Team</button>
+                </div>
+            </li>
+                   <li>
+<a href="tech-club.html" class="team-name">SPORTS CLUB</a>
+                <div class="actions">
+                    <button class="view-details-btn">View Details</button>
+                    <button class="edit-team-btn">Edit Team</button>
+                </div>
+            </li>
+                   <li>
+<a href="tech-club.html" class="team-name">VISUAL ART CLUB</a>
+                <div class="actions">
+                    <button class="view-details-btn">View Details</button>
+                    <button class="edit-team-btn">Edit Team</button>
+                </div>
+            </li>
+                   <li>
+<a href="tech-club.html" class="team-name"> TEAM 503</a>
+                <div class="actions">
+                    <button class="view-details-btn">View Details</button>
+                    <button class="edit-team-btn">Edit Team</button>
+                </div>
+            </li>
+                   <li>
+<a href="tech-club.html" class="team-name">PN BATAKS 101</a>
+                <div class="actions">
+                    <button class="view-details-btn">View Details</button>
+                    <button class="edit-team-btn">Edit Team</button>
+                </div>
+            </li>
+                   <li>
+<a href="tech-club.html" class="team-name">ROOM 305 ELEMINATORS</a>
+                <div class="actions">
+                    <button class="view-details-btn">View Details</button>
+                    <button class="edit-team-btn">Edit Team</button>
+                </div>
+            </li>
+                   <li>
+<a href="tech-club.html" class="team-name">KALDAG BOYS</a>
+                <div class="actions">
+                    <button class="view-details-btn">View Details</button>
+                    <button class="edit-team-btn">Edit Team</button>
+                </div>
+            </li>
+            <li>
+<a href="tech-club.html" class="team-name"> TEAM ERROR 205</a>
+                <div class="actions">
+                    <button class="view-details-btn">View Details</button>
+                    <button class="edit-team-btn">Edit Team</button>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        const backButton = document.querySelector(".back-button");
+
+        backButton.addEventListener("click", () => {
+            window.history.back();
+        });
+        
+    </script>
+</body>
+</html>

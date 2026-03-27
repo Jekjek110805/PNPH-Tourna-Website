@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Join Our Team</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oxanium:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="shortcut icon" href="PN EGAMES (1).png" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <style>
+      body {
+        font-family: 'Oxanium', cursive;
+        background-color: #111827;
+        color: #f9fafb;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background-image: url("PNPH BACKGROUND (2).png");
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+
+      .container {
+        max-width: 800px;
+        width: 100%;
+        background-color: rgba(240, 240, 240, 0.1);
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(240, 240, 240, 0.1);
+        margin-bottom: 30px;
+        position: relative;
+      }
+
+      h1 {
+        text-align: center;
+        color: #e0f2fe;
+        margin-bottom: 20px;
+        font-weight: 600;
+        font-size: 2.5rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      }
+
+      form {
+        margin-top: 20px;
+      }
+
+      .form-group {
+        margin-bottom: 25px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 8px;
+        color: #ffffff;
+        font-weight: 500;
+        font-size: 1.1rem;
+      }
+
+      input[type="text"],
+      input[type="email"],
+      textarea,
+      select {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid rgba(240, 240, 240, 0.2);
+        border-radius: 6px;
+        background-color: rgba(0, 0, 0, 0.05);
+        color: rgb(255, 255, 255);
+        font-family: 'Oxanium', cursive;
+        font-size: 1rem;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        backdrop-filter: blur(5px);
+      }
+
+      input[type="text"]:focus,
+      input[type="email"]:focus,
+      textarea:focus,
+      select:focus {
+        outline: none;
+        border-color: #a855f7;
+        box-shadow: 0 0 5px rgba(167, 139, 250, 0.3);
+      }
+
+      textarea {
+        resize: none;
+        height: 120px;
+      }
+
+      select {
+        appearance: none;
+        background-image: url("data:image/svg+xml,%3Csvgxmlns='http://www.w3.org/2000/svg'viewBox='0 0 24 24'%3E%3Cpathfill='%23fff'd='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 10px center;
+        background-color: #111827;
+        background-size: 20px;
+        padding-right: 30px;
+      }
+
+      button {
+        width: 100%;
+        padding: 12px;
+        background-color: #a855f7;
+        color: #ffffff;
+        border: none;
+        border-radius: 6px;
+        font-size: 1.2rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        font-family: 'Oxanium', cursive;
+      }
+
+      button:hover {
+        background-color: #7e22ce;
+        transform: translateY(-2px);
+      }
+
+      button:active {
+        background-color: #5b21b6;
+        transform: translateY(0);
+      }
+
+      .error-message {
+        color: #f87171;
+        font-size: 0.9rem;
+        margin-top: 8px;
+        display: none;
+      }
+
+      .error input,
+      .error select,
+      .error textarea,
+      .error div {
+        border-color: #f87171;
+      }
+
+      .error input:focus,
+      .error select:focus,
+      .error textarea:focus,
+      .error div:focus {
+        box-shadow: 0 0 5px rgba(248, 113, 113, 0.3);
+      }
+
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.5);
+        justify-content: center;
+        align-items: center;
+        backdrop-filter: blur(10px);
+      }
+
+      .modal-content {
+        background-color: #1d4ed8;
+        color: #f9fafb;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        width: 90%;
+        max-width: 500px;
+        text-align: center;
+        animation: fadeIn 0.3s;
+        border: 1px solid rgba(240, 240, 240, 0.1);
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(-50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .modal-content h2 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+        color: #e0f2fe;
+      }
+
+      .modal-content p {
+        font-size: 1.2rem;
+        margin-bottom: 25px;
+        line-height: 1.5;
+      }
+
+      .modal-content button {
+        padding: 12px 25px;
+        background-color: #a855f7;
+        color: #ffffff;
+        border: none;
+        border-radius: 6px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        font-family: 'Oxanium', cursive;
+        margin: 0 10px;
+      }
+
+      .modal-content button:hover {
+        background-color: #7e22ce;
+        transform: translateY(-2px);
+      }
+
+      .modal-content button:active {
+        background-color: #5b21b6;
+        transform: translateY(0);
+      }
+
+      #okBtn {
+        background-color: #a855f7;
+      }
+
+      #okBtn:hover {
+        background-color: #7e22ce;
+      }
+
+      .logo {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 30px;
+        margin-bottom: 20px;
+        height: 150px;
+        width: auto;
+      }
+
+      .back-button {
+        position: absolute;
+        top: 30px;
+        left: 30px;
+        padding: 10px 15px;
+        background-color: rgba(255, 255, 255, 0.15);
+        border: 1px solid rgba(240, 240, 240, 0.2);
+        border-radius: 6px;
+        color: #ffffff;
+        cursor: pointer;
+        font-size: 0.9rem;
+        font-family: 'Oxanium', cursive;
+        transition: background-color 0.3s ease, transform 0.2s ease, border-color 0.3s ease;
+        backdrop-filter: blur(5px);
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      }
+
+      .back-button:hover {
+        background-color: rgba(255, 255, 255, 0.25);
+        transform: translateY(-1px);
+        border-color: #a855f7;
+      }
+
+      .back-button:active {
+        background-color: rgba(255, 255, 255, 0.35);
+        transform: translateY(0);
+      }
+
+      .radio-group div {
+        margin-bottom: 12px;
+        position: relative;
+        padding-left: 30px;
+        cursor: pointer;
+        user-select: none;
+        font-size: 1.1rem;
+        color: #ddd;
+        transition: color 0.3s ease;
+      }
+
+      .radio-group input[type="radio"] {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+      }
+
+      .radio-group label {
+        cursor: pointer;
+        display: inline-block;
+        padding-left: 8px;
+        transition: color 0.3s ease;
+      }
+
+      .radio-group div::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        height: 18px;
+        width: 18px;
+        border: 2.5px solid #a855f7;
+        border-radius: 50%;
+        background-color: transparent;
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        box-sizing: border-box;
+      }
+
+      .radio-group input[type="radio"]:checked + label::before {
+        background-color: #a855f7;
+        border-color: #a855f7;
+      }
+
+      .radio-group input[type="radio"]:checked + label::after {
+        content: "";
+        position: absolute;
+        left: 5px;
+        top: 50%;
+        transform: translateY(-50%);
+        height: 10px;
+        width: 10px;
+        background-color: #1d4ed8;
+        border-radius: 50%;
+        opacity: 1;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+      }
+
+      .radio-group div:hover {
+        color: #fff;
+      }
+
+      .radio-group div:hover::before {
+        box-shadow: 0 0 8px 2px #a855f7cc;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <img src="PN EGAMES (1).png" alt="Logo" class="logo" />
+      <button class="back-button" onclick="history.back()">Back</button>
+      <h1>Join Our Team</h1>
+      <form id="joinTeamForm">
+        <div class="form-group">
+          <label for="fullName">Full Name:</label>
+          <input type="text" id="fullName" name="fullName" required />
+          <div id="fullNameError" class="error-message">
+            Please enter your full name.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required />
+          <div id="emailError" class="error-message">
+            Please enter a valid email address.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="role">Select Role:</label>
+          <select id="role" name="role" required>
+            <option value="" selected disabled>-- Choose Role --</option>
+            <option value="Team Captain">Team Captain</option>
+            <option value="Player">Player</option>
+            <option value="Coach">Coach</option>
+            <option value="Analyst">Analyst</option>
+          </select>
+        </div>
+
+        <div
+          id="teamOptions"
+          class="form-group team-options-container"
+          style="display: none;"
+        >
+          <h3 id="teamOptionsLabel">TEAM CAPTAIN:</h3>
+          <div class="radio-group">
+            <div>
+              <input type="radio" id="team1" name="team" value="Team 1" />
+              <label for="team1">TECH CLUB</label>
+            </div>
+            <div>
+              <input type="radio" id="team2" name="team" value="Team 2" />
+              <label for="team2">PERFORMING CLUB</label>
+            </div>
+            <div>
+              <input type="radio" id="team3" name="team" value="Team 3" />
+              <label for="team3">ECO GREEN CLUB</label>
+            </div>
+            <div>
+              <input type="radio" id="team4" name="team" value="Team 4" />
+              <label for="team4">LITERARY CLUB</label>
+            </div>
+            <div>
+              <input type="radio" id="team5" name="team" value="Team 5" />
+              <label for="team5">VISUAL ART CLUB</label>
+            </div>
+            <div>
+              <input type="radio" id="team6" name="team" value="Team 6" />
+              <label for="team6">TEAM 503</label>
+            </div>
+            <div>
+              <input type="radio" id="team7" name="team" value="Team 7" />
+              <label for="team7">BABYGIRLS 8</label>
+            </div>
+            <div>
+              <input type="radio" id="team8" name="team" value="Team 8" />
+              <label for="team8">PN BATAKS 101</label>
+            </div>
+            <div>
+              <input type="radio" id="team9" name="team" value="Team 9" />
+              <label for="team9">ROOM305 ELEMINATORS</label>
+            </div>
+            <div>
+              <input type="radio" id="team10" name="team" value="Team 10" />
+              <label for="team10">KALDAG BOYS</label>
+            </div>
+            <div>
+              <input type="radio" id="team11" name="team" value="Team 11" />
+              <label for="team11">TEAM ERROR 205</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="additionalInfo">Additional Info:</label>
+          <textarea id="additionalInfo" name="additionalInfo"></textarea>
+        </div>
+
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+
+    <div id="submissionModal" class="modal">
+      <div class="modal-content">
+        <h2>Information Submitted!</h2>
+        <p>Thank you for joining our team. Your application has been received successfully.</p>
+        <button id="okBtn">OK</button>
+      </div>
+    </div>
+
+    <script>
+      const roleSelect = document.getElementById('role');
+      const teamOptions = document.getElementById('teamOptions');
+      const teamOptionsLabel = document.getElementById('teamOptionsLabel');
+      const joinTeamForm = document.getElementById('joinTeamForm');
+      const submissionModal = document.getElementById('submissionModal');
+      const okBtn = document.getElementById('okBtn');
+
+      roleSelect.addEventListener('change', () => {
+        const selectedRole = roleSelect.value;
+        if (!selectedRole) {
+          teamOptions.style.display = 'none';
+          return;
+        }
+
+        teamOptions.style.display = 'block';
+
+        const radios = teamOptions.querySelectorAll('input[type="radio"]');
+        radios.forEach(radio => (radio.checked = false));
+
+        teamOptionsLabel.textContent = `${selectedRole.toUpperCase()}:`;
+      });
+
+      joinTeamForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        let isValid = true;
+        const fullName = document.getElementById('fullName');
+        const email = document.getElementById('email');
+
+        if (fullName.value.trim() === '') {
+          fullName.parentElement.classList.add('error');
+          document.getElementById('fullNameError').style.display = 'block';
+          isValid = false;
+        } else {
+          fullName.parentElement.classList.remove('error');
+          document.getElementById('fullNameError').style.display = 'none';
+        }
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email.value.trim())) {
+          email.parentElement.classList.add('error');
+          document.getElementById('emailError').style.display = 'block';
+          isValid = false;
+        } else {
+          email.parentElement.classList.remove('error');
+          document.getElementById('emailError').style.display = 'none';
+        }
+
+        if (isValid) {
+          submissionModal.style.display = 'flex';
+        }
+      });
+
+      okBtn.addEventListener('click', () => {
+        submissionModal.style.display = 'none';
+        window.location.href = 'FINALIST LOG OUT.html';
+      });
+    </script>
+  </body>
+</html>

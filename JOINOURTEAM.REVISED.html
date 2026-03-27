@@ -1,0 +1,743 @@
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Join Our Team</title>
+<link
+  href="https://fonts.googleapis.com/css2?family=Oxanium:wght@400;500;600;700&display=swap"
+  rel="stylesheet"
+/>
+<style>
+  body {
+    font-family: 'Oxanium', cursive;
+    background-color: #111827;
+    color: #f9fafb;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image: url("PNPH BACKGROUND (2).png");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .container {
+    max-width: 800px;
+    width: 100%;
+    background-color: rgba(240, 240, 240, 0.1);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(240, 240, 240, 0.1);
+    margin-bottom: 30px;
+    position: relative;
+  }
+
+  h1 {
+    text-align: center;
+    color: #e0f2fe;
+    margin-bottom: 20px;
+    font-weight: 600;
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+
+  form {
+    margin-top: 20px;
+  }
+
+  .form-group {
+    margin-bottom: 25px;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 8px;
+    color: #ffffff;
+    font-weight: 500;
+    font-size: 1.1rem;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  textarea,
+  select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid rgba(240, 240, 240, 0.2);
+    border-radius: 6px;
+    background-color: rgba(0, 0, 0, 0.05);
+    color: rgb(255, 255, 255);
+    font-family: 'Oxanium', cursive;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    backdrop-filter: blur(5px);
+  }
+
+  input[type="text"]:focus,
+  input[type="email"]:focus,
+  textarea:focus,
+  select:focus {
+    outline: none;
+    border-color: #a855f7;
+    box-shadow: 0 0 5px rgba(167, 139, 250, 0.3);
+  }
+
+  textarea {
+    resize: none;
+    height: 120px;
+  }
+
+  select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvgxmlns='http://www.w3.org/2000/svg'viewBox='0 0 24 24'%3E%3Cpathfill='%23fff'd='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-color: #111827;
+    background-size: 20px;
+    padding-right: 30px;
+  }
+
+  button {
+    width: 100%;
+    padding: 12px;
+    background-color: #a855f7;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-family: 'Oxanium', cursive;
+  }
+
+  button:hover {
+    background-color: #7e22ce;
+    transform: translateY(-2px);
+  }
+
+  button:active {
+    background-color: #5b21b6;
+    transform: translateY(0);
+  }
+
+  .error-message {
+    color: #f87171;
+    font-size: 0.9rem;
+    margin-top: 8px;
+    display: none;
+  }
+
+  .error input,
+  .error select,
+  .error textarea {
+    border-color: #f87171;
+  }
+
+  .error input:focus,
+  .error select:focus,
+  .error textarea:focus {
+    box-shadow: 0 0 5px rgba(248, 113, 113, 0.3);
+  }
+
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(10px);
+  }
+
+  .modal-content {
+    background-color: #1d4ed8;
+    color: #f9fafb;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+    animation: fadeIn 0.3s;
+    border: 1px solid rgba(240, 240, 240, 0.1);
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .modal-content h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #e0f2fe;
+  }
+
+  .modal-content p {
+    font-size: 1.2rem;
+    margin-bottom: 25px;
+    line-height: 1.5;
+  }
+
+  .modal-content button {
+    padding: 12px 25px;
+    background-color: #a855f7;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-family: 'Oxanium', cursive;
+    margin: 0 10px;
+  }
+
+  .modal-content button:hover {
+    background-color: #7e22ce;
+    transform: translateY(-2px);
+  }
+
+  .modal-content button:active {
+    background-color: #5b21b6;
+    transform: translateY(0);
+  }
+
+  .logo {
+    top: 20px;
+    height: 150px;
+    margin-left: 320px;
+    margin-top: 30px;
+    width: auto;
+  }
+
+  .back-button {
+    top: 20px;
+    border: none;
+    border-radius: 6px;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(240, 240, 240, 0.1);
+  }
+
+  .back-button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .back-button:active {
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+
+  /* Custom radio buttons styling for the team options */
+  .team-options-container {
+    margin-top: 15px;
+    background-color: rgba(30, 20, 60, 0.3);
+    padding: 15px 20px;
+    border-radius: 10px;
+    border: 1px solid #a855f7aa;
+    color: #ddd;
+  }
+
+  .team-options-container h3 {
+    color: #a855f7;
+    margin-bottom: 12px;
+    font-weight: 600;
+  }
+
+  .team-options-container div {
+    margin-bottom: 12px;
+    position: relative;
+    padding-left: 30px;
+    cursor: pointer;
+    user-select: none;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+  }
+
+  .team-options-container input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+
+  .team-options-container label {
+    cursor: pointer;
+    display: inline-block;
+    padding-left: 8px;
+    position: relative;
+    transition: color 0.3s ease;
+  }
+
+  /* Custom circle */
+  .team-options-container label::before {
+    content: "";
+    position: absolute;
+    left: -30px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 18px;
+    width: 18px;
+    border: 2px solid #a855f7;
+    border-radius: 50%;
+    background-color: transparent;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+
+  /* Checked state */
+  .team-options-container input[type="radio"]:checked + label::before {
+    background-color: #a855f7;
+    box-shadow: 0 0 8px 2px #a855f7aa;
+    border-color: #a855f7;
+  }
+
+  /* Hover */
+  .team-options-container div:hover label {
+    color: #d8b4fe;
+  }
+
+  .team-options-container div:hover label::before {
+    border-color: #d8b4fe;
+  }
+</style>
+</head>
+<style>
+
+
+
+
+    body {
+    font-family: 'Oxanium', cursive;
+    background-color: #111827;
+    color: #f9fafb;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image: url("PNPH BACKGROUND (2).png");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .container {
+    max-width: 800px;
+    width: 100%;
+    background-color: rgba(240, 240, 240, 0.1);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(240, 240, 240, 0.1);
+    margin-bottom: 30px;
+    position: relative;
+  }
+
+  h1 {
+    text-align: center;
+    color: #e0f2fe;
+    margin-bottom: 20px;
+    font-weight: 600;
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+
+  form {
+    margin-top: 20px;
+  }
+
+  .form-group {
+    margin-bottom: 25px;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 8px;
+    color: #ffffff;
+    font-weight: 500;
+    font-size: 1.1rem;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  textarea,
+  select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid rgba(240, 240, 240, 0.2);
+    border-radius: 6px;
+    background-color: rgba(0, 0, 0, 0.05);
+    color: rgb(255, 255, 255);
+    font-family: 'Oxanium', cursive;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    backdrop-filter: blur(5px);
+  }
+
+  input[type="text"]:focus,
+  input[type="email"]:focus,
+  textarea:focus,
+  select:focus {
+    outline: none;
+    border-color: #a855f7;
+    box-shadow: 0 0 5px rgba(167, 139, 250, 0.3);
+  }
+
+  textarea {
+    resize: none;
+    height: 120px;
+  }
+
+  select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvgxmlns='http://www.w3.org/2000/svg'viewBox='0 0 24 24'%3E%3Cpathfill='%23fff'd='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-color: #111827;
+    background-size: 20px;
+    padding-right: 30px;
+  }
+
+  button {
+    width: 100%;
+    padding: 12px;
+    background-color: #a855f7;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-family: 'Oxanium', cursive;
+  }
+
+  button:hover {
+    background-color: #7e22ce;
+    transform: translateY(-2px);
+  }
+
+  button:active {
+    background-color: #5b21b6;
+    transform: translateY(0);
+  }
+
+  .error-message {
+    color: #f87171;
+    font-size: 0.9rem;
+    margin-top: 8px;
+    display: none;
+  }
+
+  .error input,
+  .error select,
+  .error textarea {
+    border-color: #f87171;
+  }
+
+  .error input:focus,
+  .error select:focus,
+  .error textarea:focus {
+    box-shadow: 0 0 5px rgba(248, 113, 113, 0.3);
+  }
+
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(10px);
+  }
+
+  .modal-content {
+    background-color: #1d4ed8;
+    color: #f9fafb;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+    animation: fadeIn 0.3s;
+    border: 1px solid rgba(240, 240, 240, 0.1);
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .modal-content h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #e0f2fe;
+  }
+
+  .modal-content p {
+    font-size: 1.2rem;
+    margin-bottom: 25px;
+    line-height: 1.5;
+  }
+
+  .modal-content button {
+    padding: 12px 25px;
+    background-color: #a855f7;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-family: 'Oxanium', cursive;
+    margin: 0 10px;
+  }
+
+  .modal-content button:hover {
+    background-color: #7e22ce;
+    transform: translateY(-2px);
+  }
+
+  .modal-content button:active {
+    background-color: #5b21b6;
+    transform: translateY(0);
+  }
+
+  .logo {
+    top: 20px;
+    height: 150px;
+    margin-left: 320px;
+    margin-top: 30px;
+    width: auto;
+  }
+
+  .back-button {
+    top: 20px;
+    border: none;
+    border-radius: 6px;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(240, 240, 240, 0.1);
+  }
+
+  .back-button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .back-button:active {
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+
+  /* Custom radio buttons styling for the team options */
+  .team-options-container {
+    margin-top: 15px;
+    background-color: rgba(30, 20, 60, 0.3);
+    padding: 15px 20px;
+    border-radius: 10px;
+    border: 1px solid #a855f7aa;
+    color: #ddd;
+  }
+
+  .team-options-container h3 {
+    color: #a855f7;
+    margin-bottom: 12px;
+    font-weight: 600;
+  }
+
+  .team-options-container div {
+    margin-bottom: 12px;
+    position: relative;
+    padding-left: 30px;
+    cursor: pointer;
+    user-select: none;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+  }
+
+  .team-options-container input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+
+  .team-options-container label {
+    cursor: pointer;
+    display: inline-block;
+    padding-left: 8px;
+    position: relative;
+    transition: color 0.3s ease;
+  }
+
+  /* Custom circle */
+  .team-options-container label::before {
+    content: "";
+    position: absolute;
+    left: -30px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 18px;
+    width: 18px;
+    border: 2px solid #a855f7;
+    border-radius: 50%;
+    background-color: transparent;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+
+  /* Checked state */
+  .team-options-container input[type="radio"]:checked + label::before {
+    background-color: #a855f7;
+    box-shadow: 0 0 8px 2px #a855f7aa;
+    border-color: #a855f7;
+  }
+
+  /* Hover */
+  .team-options-container div:hover label {
+    color: #d8b4fe;
+  }
+
+  .team-options-container div:hover label::before {
+    border-color: #d8b4fe;
+  }
+</style>
+<body>
+    <form id="teamForm">
+      <div class="form-group">
+        <label for="role">Select Role:</label>
+        <select id="role" name="role" required>
+          <option value="" selected disabled>-- Choose Role --</option>
+          <option value="Team Captain">Team Captain</option>
+          <option value="Player">Player</option>
+          <option value="Coach">Coach</option>
+          <option value="Analyst">Analyst</option>
+        </select>
+      </div>
+
+      <!-- Single team radio buttons container used for all roles -->
+      <div
+        id="teamOptions"
+        class="team-options-container"
+        style="display: none;"
+      >
+        <h3 id="teamOptionsLabel">TEAM CAPTAIN:</h3>
+        <div>
+          <input type="radio" id="team1" name="team" value="Team 1" />
+          <label for="team1">TECH CLUB</label>
+        </div>
+        <div>
+          <input type="radio" id="team2" name="team" value="Team 2" />
+          <label for="team2">PERFORMING CLUB</label>
+        </div>
+        <div>
+          <input type="radio" id="team3" name="team" value="Team 3" />
+          <label for="team3">ECO GREEN CLUB</label>
+        </div>
+        <div>
+          <input type="radio" id="team4" name="team" value="Team 4" />
+          <label for="team4">LITERARY CLUB</label>
+        </div>
+        <div>
+          <input type="radio" id="team5" name="team" value="Team 5" />
+          <label for="team5">VISUAL ART CLUB</label>
+        </div>
+        <div>
+          <input type="radio" id="team6" name="team" value="Team 6" />
+          <label for="team6">TEAM 503</label>
+        </div>
+        <div>
+          <input type="radio" id="team7" name="team" value="Team 7" />
+          <label for="team7">BABYGIRLS 8</label>
+        </div>
+        <div>
+          <input type="radio" id="team8" name="team" value="Team 8" />
+          <label for="team8"P>N BATAKS 101</label>
+        </div>
+        <div>
+          <input type="radio" id="team9" name="team" value="Team 9" />
+          <label for="team9">ROOM305 ELEMINATORS</label>
+        </div>
+        <div>
+          <input type="radio" id="team10" name="team" value="Team 10" />
+          <label for="team10">KALDAG BOYS</label>
+        </div>
+        <div>
+          <input type="radio" id="team11" name="team" value="Team 11" />
+          <label for="team11">TEAM ERROR 205</label>
+        </div>
+      </div>
+
+      <!-- Additional info textarea -->
+      <div class="form-group">
+        <label for="additionalInfo">Additional Info:</label>
+        <textarea id="additionalInfo" name="additionalInfo"></textarea>
+      </div>
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <script>
+    const roleSelect = document.getElementById('role');
+    const teamOptions = document.getElementById('teamOptions');
+    const teamOptionsLabel = document.getElementById('teamOptionsLabel');
+
+    roleSelect.addEventListener('change', () => {
+      const selectedRole = roleSelect.value;
+      if (!selectedRole) {
+        teamOptions.style.display = 'none';
+        return;
+      }
+
+      // Show the team options container
+      teamOptions.style.display = 'block';
+
+      // Clear any previously selected radio
+      const radios = teamOptions.querySelectorAll('input[type="radio"]');
+      radios.forEach(radio => (radio.checked = false));
+
+      // Change heading label dynamically based on role
+      teamOptionsLabel.textContent = `${selectedRole.toUpperCase()}:`;
+    });
+  </script>
+</body>
+</html>
+
